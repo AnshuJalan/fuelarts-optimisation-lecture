@@ -1,0 +1,38 @@
+{ parameter (or (unit %change_val_1) (unit %change_val_2)) ;
+  storage (pair (pair (lambda %add (pair nat nat) nat) (nat %val_1)) (nat %val_2)) ;
+  code { UNPAIR ;
+         IF_LEFT
+           { DROP ;
+             DUP ;
+             DUP 2 ;
+             CAR ;
+             DUP 3 ;
+             CDR ;
+             DUP 4 ;
+             CAR ;
+             CDR ;
+             PAIR ;
+             DIG 3 ;
+             CAR ;
+             CAR ;
+             SWAP ;
+             EXEC ;
+             UPDATE 2 ;
+             UPDATE 1 }
+           { DROP ;
+             DUP ;
+             DUP 2 ;
+             CDR ;
+             DUP 3 ;
+             CAR ;
+             CDR ;
+             PAIR ;
+             DIG 2 ;
+             CAR ;
+             CAR ;
+             SWAP ;
+             EXEC ;
+             UPDATE 2 } ;
+         NIL operation ;
+         PAIR } }
+

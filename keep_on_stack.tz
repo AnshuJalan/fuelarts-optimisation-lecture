@@ -1,0 +1,10 @@
+{ parameter (or (nat %compute_off_stack) (nat %compute_on_stack)) ;
+  storage (pair (nat %val_1) (nat %val_2)) ;
+  code { CAR ;
+         IF_LEFT
+           { PUSH nat 5 ; DUP 2 ; ADD ; PUSH nat 5 ; DIG 2 ; ADD }
+           { PUSH nat 5 ; ADD ; DUP } ;
+         PAIR ;
+         NIL operation ;
+         PAIR } }
+

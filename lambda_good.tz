@@ -1,0 +1,29 @@
+{ parameter (or (unit %change_val_1) (unit %change_val_2)) ;
+  storage (pair (nat %val_1) (nat %val_2)) ;
+  code { LAMBDA
+           (pair nat nat)
+           nat
+           { LEFT nat ;
+             LOOP_LEFT
+               { UNPAIR ;
+                 PUSH nat 0 ;
+                 DUP 3 ;
+                 COMPARE ;
+                 NEQ ;
+                 IF { DUP 2 ;
+                      SWAP ;
+                      EDIV ;
+                      IF_NONE { PUSH string "MOD by 0" ; FAILWITH } {} ;
+                      CDR ;
+                      SWAP ;
+                      PAIR ;
+                      LEFT nat }
+                    { SWAP ; DROP ; RIGHT (pair nat nat) } } } ;
+         SWAP ;
+         UNPAIR ;
+         IF_LEFT
+           { DROP ; DUP ; DIG 2 ; SWAP ; EXEC ; UPDATE 1 }
+           { DROP ; DUP ; DIG 2 ; SWAP ; EXEC ; UPDATE 2 } ;
+         NIL operation ;
+         PAIR } }
+

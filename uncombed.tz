@@ -1,0 +1,19 @@
+{ parameter unit ;
+  storage
+    (pair (pair (pair (nat %val_1) (nat %val_2)) (nat %val_3) (nat %val_4))
+          (nat %val_5)
+          (nat %val_6)) ;
+  code { CDR ;
+         DUP ;
+         DUP 2 ;
+         CDR ;
+         PUSH nat 5 ;
+         DIG 3 ;
+         CDR ;
+         CAR ;
+         ADD ;
+         UPDATE 1 ;
+         UPDATE 2 ;
+         NIL operation ;
+         PAIR } }
+

@@ -1,0 +1,11 @@
+{ parameter (or (unit %change_val_1) (unit %change_val_2)) ;
+  storage (pair (nat %val_1) (nat %val_2)) ;
+  code { LAMBDA (pair nat nat) nat { UNPAIR ; ADD } ;
+         SWAP ;
+         UNPAIR ;
+         IF_LEFT
+           { DROP ; DUP ; DIG 2 ; SWAP ; EXEC ; UPDATE 1 }
+           { DROP ; DUP ; DIG 2 ; SWAP ; EXEC ; UPDATE 2 } ;
+         NIL operation ;
+         PAIR } }
+
